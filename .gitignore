@@ -4,7 +4,8 @@ __pycache__/
 
 # C extensions
 *.so
-
+wait-for-it.sh
+welcome.jpg
 # Distribution / packaging
 .Python
 build/
@@ -27,7 +28,7 @@ share/python-wheels/
 MANIFEST
 pyvenv.cfg
 .venv
-
+[Dd]b/
 # PyInstaller
 #  Usually these files are written by a python script from a template
 #  before PyInstaller builds the exe, so as to inject date/other infos into it.

@@ -1,0 +1,17 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+<link rel="stylesheet" href="{% static 'main.css' %}">
+
+<head>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+    {% include "_navbar.html"%}
+    {% block main %}
+    コンテンツがありません
+    {% endblock %}
+</body>
+
+</html>
