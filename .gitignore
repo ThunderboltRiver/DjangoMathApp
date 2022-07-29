@@ -1,11 +1,12 @@
 __pycache__/
 *.py[cod]
 *$py.class
-
+welcome.jpg
+admin/
 # C extensions
 *.so
 wait-for-it.sh
-welcome.jpg
+
 # Distribution / packaging
 .Python
 build/
