@@ -2,6 +2,8 @@
 from typing import Any, Dict
 from django.views.generic import TemplateView
 from django.http import HttpResponse
+from django.views.decorators.csrf import requires_csrf_token
+from django.http import HttpResponseServerError
 
 
 class IndexView(TemplateView):
@@ -22,3 +24,12 @@ class AboutView(TemplateView):
         ctxt["skills"] = ["Python", "JavaScript", "Julia"]
         # ctxt["skills"] = []
         return ctxt
+
+
+@requires_csrf_token
+def my_customized_server_error(request, template_name="500.html"):
+    import sys
+    from django.views import debug
+
+    error_html = debug.technical_500_response(request, *sys.exc_info()).content
+    return HttpResponseServerError(error_html)
