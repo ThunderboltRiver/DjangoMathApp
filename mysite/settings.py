@@ -76,26 +76,37 @@ TEMPLATES = [
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.sqlite3",
+#         "NAME": f"{str(BASE_DIR)}/db.sqlite3",
+#         "USER": "django",
+#         "PASSWORD": "password",
+#         "HOST": "db",
+#         "PORT": "3306",
+#     }
+# }
+
+import dj_database_url
+from dotenv import (
+    find_dotenv,
+    load_dotenv,
+)
+
+load_dotenv(find_dotenv())
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": f"{str(BASE_DIR)}/db.sqlite3",
-        "USER": "django",
-        "PASSWORD": "password",
-        "HOST": "db",
-        "PORT": "3306",
-    }
+    "default": dj_database_url.config(conn_max_age=600),
 }
 
 # DATABASES = {
-#    "default": {
-#        "ENGINE": "django.db.backends.mysql",
-#        "NAME": os.environ.get("MYSQL_DATABASE"),
-#        "USER": os.environ.get("MYSQL_USER"),
-#        "PASSWORD": os.environ.get("MYSQL_PASSWORD"),
-#        "HOST": "db",
-#        "PORT": 3306,
-#    }
+#     "default": {
+#         "ENGINE": "django.db.backends.mysql",
+#         "NAME": os.environ.get("MYSQL_DATABASE"),
+#         "USER": os.environ.get("MYSQL_USER"),
+#         "PASSWORD": os.environ.get("MYSQL_PASSWORD"),
+#         "HOST": "db",
+#         "PORT": 3306,
+#     }
 # }
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
