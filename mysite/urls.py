@@ -20,7 +20,8 @@ from polls import views
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("", include("polls.urls")),
+    path("polls/", include("polls.urls")),
+    path("", include("blogs.urls")),
 ]
 
 handler500 = views.my_customized_server_error
