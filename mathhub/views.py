@@ -1,8 +1,12 @@
 from .models import Document
 from django.shortcuts import render
 from django.views.generic import ListView
+from django.views.decorators.csrf import requires_csrf_token
+from django.http import HttpResponseServerError
 
 # Create your views here.
+
+
 class Index(ListView):
     model = Document
 
