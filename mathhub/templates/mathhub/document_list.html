@@ -1,12 +1,18 @@
 {% extends "mathhub/base.html" %}
 {% block main %}
-<h2>document一覧</h2>
-<div class="row justify-content-start">
-    <ol class="text-left col-12">
-        {% for document in object_list %}
-        <li class="list-unstyled">{{ document.title }}{{ document.auther }}</li>
-        {% endfor %}
-    </ol>
-</div>
+<ul class="list-group list-group-flush">
+    {% for document in object_list %}
+    <li class="card list-group mb-4">
+        <div class="d-flex flex-column align-items-center">
+            <a class="fw-bolder fs-3" href="">{{ document.title }}</a>
+            <p class="align-self-end">{{document.auther}}</p>
+        </div>
+        <div class="d-flex flex-row justify-content-end">
+            <p>作成日:{{ document.created }}</p>
+            <p>更新日:{{ document.updated }}</p>
+        </div>
+    </li>
+    {% endfor %}
+</ul>
 
 {% endblock %}
