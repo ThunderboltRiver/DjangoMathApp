@@ -38,8 +38,8 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "django.contrib.humanize",
-    "polls.apps.PollsConfig",
     "blogs",
+    "mathhub",
 ]
 
 MIDDLEWARE = [
