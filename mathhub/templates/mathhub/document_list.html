@@ -1,9 +1,12 @@
 {% extends "mathhub/base.html" %}
 {% block main %}
 <h2>document一覧</h2>
-<ol>
-    {% for document in object_list %}
-    <li>{{ document.title }}{{ document.auther }}</li>
-    {% endfor %}
-</ol>
+<div class="row justify-content-start">
+    <ol class="text-left col-12">
+        {% for document in object_list %}
+        <li class="list-unstyled">{{ document.title }}{{ document.auther }}</li>
+        {% endfor %}
+    </ol>
+</div>
+
 {% endblock %}
