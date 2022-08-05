@@ -3,7 +3,7 @@
 <h2>document一覧</h2>
 <ol>
     {% for document in object_list %}
-    <li>{{ document.title }}</li>
+    <li>{{ document.title }}{{ document.auther }}</li>
     {% endfor %}
 </ol>
 {% endblock %}

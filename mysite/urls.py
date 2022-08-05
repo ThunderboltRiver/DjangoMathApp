@@ -16,9 +16,10 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import include, path
-
+from mathhub import views
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", include("mathhub.urls")),
 ]
+handler500 = views.my_customized_server_error
