@@ -1,6 +1,8 @@
 from .models import Document
 from django.shortcuts import render
 from django.views.generic import ListView
+from django.views.generic.edit import FormView
+from .forms import DocumentForm
 from django.views.decorators.csrf import requires_csrf_token
 from django.http import HttpResponseServerError
 from django.db.models import Q
@@ -8,15 +10,17 @@ from django.db.models import Q
 # Create your views here.
 
 
-class Index(ListView):
+class DocumentView(FormView, ListView):
+    form_class = DocumentForm
     context_object_name = "document_list"
-
     model = Document
 
     def get_queryset(self):
         queryset = Document.objects.order_by("-created")
-        query = self.request.GET.get("query")
+        print(self.request.GET)
+        query = self.request.GET.get("title")
         if query:
+            print("----")
             queryset = queryset.filter(
                 Q(title__icontains=query) | Q(auther__icontains=query)
             )

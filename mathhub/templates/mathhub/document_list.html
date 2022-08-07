@@ -1,4 +1,8 @@
 {% extends "mathhub/base.html" %}
+{% block serchbar %}
+{{ form.title }}
+{% endblock %}
+
 {% block main %}
 <ul class="list-group list-group-flush">
     {% for document in object_list %}

@@ -21,8 +21,10 @@
         <form action="{% url 'index' %}" method="GET">
             <div class="d-flex justify-content-start">
                 <div class="col-6 mx-2">
-                    <input class="form-control" type="text" placeholder="検索" name="query" ,
-                        value="{{ request.GET.query }}">
+                    <!-- <input class="form-control" type="text" placeholder="検索" name="query" ,
+                        value="{{ request.GET.query }}"> -->
+                    {% block serchbar %}
+                    {% endblock %}
                 </div>
                 <button class="btn btn-primary" type="submit">検索</button>
             </div>
