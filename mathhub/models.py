@@ -44,7 +44,7 @@ class Document(models.Model):
         blank=False,
         null=False,
     )
-    auther = models.CharField(
+    author = models.CharField(
         max_length=255,
         null=False,
         blank=False,

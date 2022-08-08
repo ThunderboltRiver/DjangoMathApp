@@ -20,7 +20,7 @@ class DocumentView(FormView, ListView):
         query = self.request.GET.get("title")
         if query:
             queryset = queryset.filter(
-                Q(title__icontains=query) | Q(auther__icontains=query)
+                Q(title__icontains=query) | Q(author__icontains=query)
             )
         return queryset
 
