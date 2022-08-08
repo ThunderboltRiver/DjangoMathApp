@@ -20,6 +20,6 @@ from mathhub import views
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("", include("mathhub.urls")),
+    path("mathhub/", include("mathhub.urls")),
 ]
 handler500 = views.my_customized_server_error
