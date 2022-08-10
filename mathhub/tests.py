@@ -2,7 +2,7 @@ from django.test import TestCase, RequestFactory, Client
 from django.urls import resolve
 from django.db import models
 from django.contrib.auth import get_user_model
-from .views import DocumentView, question_of_document
+from .views import DocumentView
 from .models import Document, Question
 
 UserModel = get_user_model()
@@ -50,8 +50,8 @@ class DocumentDetailTest(TestCase):
         )
 
         self.question = Question.objects.create(
-            user_id=self.user,
-            document_id=self.document,
+            user=self.user,
+            document=self.document,
             title="test_question_title",
             body="test_question_body",
             page_num=10,
@@ -61,4 +61,4 @@ class DocumentDetailTest(TestCase):
     def test_question_of_document_return_(self):
         client = Client()
         response = client.get("/mathhub/document/1/")
-        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, "mathhub/document_detail.html")

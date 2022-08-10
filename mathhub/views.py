@@ -1,6 +1,6 @@
-from .models import Document
+from .models import Document, Question
 from django.shortcuts import render
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 from django.views.generic.edit import FormView
 from .forms import DocumentForm
 from django.views.decorators.csrf import requires_csrf_token
@@ -28,8 +28,9 @@ class DocumentView(FormView, ListView):
         return "Mathhub Documents"
 
 
-def question_of_document(request, document_id):
-    return HttpResponse("ドキュメントの質問一覧")
+class DocumentDetail(DetailView):
+
+    model = Document
 
 
 @requires_csrf_token

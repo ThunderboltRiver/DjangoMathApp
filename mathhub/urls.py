@@ -4,8 +4,8 @@ from . import views
 urlpatterns = [
     path("document/", views.DocumentView.as_view(), name="mathhub-document"),
     path(
-        "document/<int:document_id>/",
-        views.question_of_document,
+        "document/<int:pk>/",
+        views.DocumentDetail.as_view(),
         name="document_question",
     ),
     # path("create/", views.Create.as_view(), name="create"),

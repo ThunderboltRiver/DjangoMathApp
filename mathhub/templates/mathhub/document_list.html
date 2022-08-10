@@ -8,7 +8,7 @@
     {% for document in object_list %}
     <li class="card list-group mb-4">
         <div class="d-flex flex-column align-items-center">
-            <a class="fw-bolder fs-3" href="">{{ document.title }}</a>
+            <a class="fw-bolder fs-3" href={{document.pk}}>{{ document.title }}</a>
             <p class="align-self-end">{{document.author}}</p>
         </div>
         <div class="d-flex flex-row justify-content-end">

@@ -65,12 +65,12 @@ class Document(models.Model):
 
 
 class Question(models.Model):
-    user_id = models.ForeignKey(UserModel, on_delete=models.CASCADE)
-    document_id = models.ForeignKey(
+    user = models.ForeignKey(UserModel, on_delete=models.CASCADE)
+    document = models.ForeignKey(
         Document,
         on_delete=models.CASCADE,
     )
-    title = models.CharField(max_length=255, null=False, blank=False, default="title")
+    title = models.CharField(max_length=256, null=False, blank=False, default="title")
     body = models.TextField(null=False, blank=False, default="body")
     page_num = models.PositiveIntegerField(
         blank=True,
