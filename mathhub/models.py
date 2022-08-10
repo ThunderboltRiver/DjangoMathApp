@@ -1,8 +1,10 @@
 from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.urls import reverse_lazy
+from django.contrib.auth import get_user_model
 
 # Create your models here.
+UserModel = get_user_model()
 
 
 class Category(models.Model):
@@ -56,6 +58,26 @@ class Document(models.Model):
         blank=True,
     )
     totalpage = models.PositiveIntegerField(
+        blank=True,
+        null=True,
+        default=1,
+    )
+
+
+class Question(models.Model):
+    user_id = models.ForeignKey(UserModel, on_delete=models.CASCADE)
+    document_id = models.ForeignKey(
+        Document,
+        on_delete=models.CASCADE,
+    )
+    title = models.CharField(max_length=255, null=False, blank=False, default="title")
+    body = models.TextField(null=False, blank=False, default="body")
+    page_num = models.PositiveIntegerField(
+        blank=True,
+        null=True,
+        default=1,
+    )
+    column_num = models.PositiveIntegerField(
         blank=True,
         null=True,
         default=1,

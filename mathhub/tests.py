@@ -1,8 +1,11 @@
 from django.test import TestCase, RequestFactory, Client
 from django.urls import resolve
 from django.db import models
+from django.contrib.auth import get_user_model
 from .views import DocumentView, question_of_document
-from .models import Document
+from .models import Document, Question
+
+UserModel = get_user_model()
 
 # Create your tests here.
 class DocumentViewTest(TestCase):
@@ -32,6 +35,30 @@ class DocumentViewTest(TestCase):
 
 
 class DocumentDetailTest(TestCase):
+    def setUp(self) -> None:
+        self.user = UserModel.objects.create(
+            username="test_user_name",
+            first_name="test_first_name",
+            last_name="test_last_name",
+            email="example@test.com",
+            password="this_test_password001",
+        )
+
+        self.document = Document.objects.create(
+            title="test_document",
+            author="test_author",
+        )
+
+        self.question = Question.objects.create(
+            user_id=self.user,
+            document_id=self.document,
+            title="test_question_title",
+            body="test_question_body",
+            page_num=10,
+            column_num=11,
+        )
+
     def test_question_of_document_return_(self):
-        found = resolve("/mathhub/document/1/")
-        self.assertEqual(question_of_document, found.func)
+        client = Client()
+        response = client.get("/mathhub/document/1/")
+        self.assertEqual(response.status_code, 200)
