@@ -6,7 +6,7 @@ urlpatterns = [
     path(
         "document/<int:pk>/",
         views.DocumentDetail.as_view(),
-        name="document_question",
+        name="document-detail",
     ),
     # path("create/", views.Create.as_view(), name="create"),
     # path("update/<pk>", views.Update.as_view(), name="update"),

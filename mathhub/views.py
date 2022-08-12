@@ -29,8 +29,12 @@ class DocumentView(FormView, ListView):
 
 
 class DocumentDetail(DetailView):
-
     model = Document
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["question_list"] = Question.objects.filter(document=self.object)
+        return context
 
 
 @requires_csrf_token

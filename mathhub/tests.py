@@ -11,7 +11,7 @@ UserModel = get_user_model()
 class DocumentViewTest(TestCase):
     def setUp(self) -> None:
         self.document = Document.objects.create(
-            title="test_document", author="test_author"
+            title="test_document1", author="test_author"
         )
 
     def test_documentview_shoud_iclude_created_document(self):
@@ -58,7 +58,20 @@ class DocumentDetailTest(TestCase):
             column_num=11,
         )
 
-    def test_question_of_document_return_(self):
-        client = Client()
-        response = client.get("/mathhub/document/1/")
-        self.assertTemplateUsed(response, "mathhub/document_detail.html")
+        self.client = Client()
+        self.url = f"/mathhub/document/{self.document.pk}/"
+        self.response = self.client.get(self.url)
+        self.context_data = self.response.context_data
+
+    def test_shoud_return_expected_template(self):
+        self.assertTemplateUsed(self.response, "mathhub/document_detail.html")
+
+    def test_shoud_return_expected_document(self):
+        document = self.response.context_data["document"]
+        expected = Document.objects.get(pk=self.document.pk)
+        self.assertEqual(expected, document)
+
+    def test_context_data_shoud_include_expected_question_list(self):
+        self.assertIn("question_list", self.context_data.keys())
+        expected_questions = Question.objects.filter(document=self.document)
+        self.assertQuerysetEqual(expected_questions, self.context_data["question_list"])
