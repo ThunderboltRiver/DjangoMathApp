@@ -18,7 +18,7 @@ eggs/
 [Ll]ib/
 [Ll]ib64/
 [Bb]in/
-.env
+/.env
 parts/
 sdist/
 var/

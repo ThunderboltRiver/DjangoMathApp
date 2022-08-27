@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "django.contrib.humanize",
-    "rest_framework",
+    # "rest_framework",
     "blogs",
     "mathhub",
 ]
@@ -95,21 +95,23 @@ from dotenv import (
     load_dotenv,
 )
 
-load_dotenv(find_dotenv())
-DATABASES = {
-    "default": dj_database_url.config(conn_max_age=600),
-}
-
+# envpass = find_dotenv()
+# load_dotenv(envpass)
 # DATABASES = {
-#     "default": {
-#         "ENGINE": "django.db.backends.mysql",
-#         "NAME": os.environ.get("MYSQL_DATABASE"),
-#         "USER": os.environ.get("MYSQL_USER"),
-#         "PASSWORD": os.environ.get("MYSQL_PASSWORD"),
-#         "HOST": "db",
-#         "PORT": 3306,
-#     }
+#     "default": dj_database_url.config(conn_max_age=600),
+
 # }
+
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.mysql",
+        "NAME": os.environ.get("MYSQL_DATABASE"),
+        "USER": os.environ.get("MYSQL_USER"),
+        "PASSWORD": os.environ.get("MYSQL_PASSWORD"),
+        "HOST": "db",
+        "PORT": 3306,
+    }
+}
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
 
